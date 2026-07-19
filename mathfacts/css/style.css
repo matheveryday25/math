@@ -1,0 +1,245 @@
+/****************************************
+  ==== RESETS
+****************************************/
+
+html,body,div,canvas { margin: 0; padding: 0; }
+::-moz-selection { color: #ff6a00; text-shadow: none; }
+::selection { color: #ff6a00; text-shadow: none; }
+.clear:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+.clear { display: inline-table; clear: both; }
+/* Hides from IE-mac \*/ * html .clear { height: 1%; } .clear { display: block; } /* End hide from IE-mac */
+
+/****************************************
+  ==== LAYOUT
+****************************************/
+
+html, body { width: 100%; height: 100%; font-family: Helvetica, Verdana, Arial, sans-serif; background-color: #1a1a1a; color: #ff6a00; }
+p.header, p.footer { display: none; }
+img.il-logo {
+    position: absolute;
+    height: 38px;
+    line-height: 38px;
+    bottom: 10px;
+    left: 10px;
+}
+img.bb-logo {
+    position: absolute;
+    height: 64px;
+    line-height: 38px;
+    bottom: 10px;
+    right: 10px;
+}
+.template-wrap { position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); }
+.template-wrap canvas {
+    margin: 0 0 10px 0;
+    position: relative;
+    z-index: 9;
+    box-shadow: 0 10px 30px rgba(255, 106, 0, 0.3);
+    -moz-box-shadow: 0 10px 30px rgba(255, 106, 0, 0.3);
+}
+.fullscreen { float: right; position: relative; z-index: 10; }
+.gray {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    opacity: 0.4;
+    z-index: 0;
+}
+.center {
+    top: calc(50% - 100px);
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.bottom {
+    top: calc(100% - 100px);
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+#gauge-wrapper {
+    padding: 0 100px;
+    margin: 0 1px 0 0;
+    float: right;
+    display: inline;
+    position: relative;
+    top: 6px;
+    right: 100px;
+    width: 150px;
+    border-style: solid;
+    border-color: #ff6a00;
+    height: 22px;
+    z-index: 2;
+    background-color: #222;
+}
+#gauge-wrapper table {
+    border-collapse: collapse;
+}
+.red {
+    background-color: #cc2200;
+}
+.yellow {
+    background-color: #ff9900;
+}
+.green {
+    background-color: #ff6a00;
+}
+.black {
+    background-color: #111111;
+}
+.white {
+    background-color: #2a2a2a;
+}
+.progress-rows {
+    display: block;
+}
+.progress-rows div {
+    display: inline;
+}
+.hider {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    height: 24px;
+    width: 100%;
+    background-color: #1a1a1a;
+}
+#mbps {
+    position: absolute;
+    line-height: 24px;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+    left: 0;
+    color: #ff6a00;
+}
+.speed {
+    position: absolute;
+    left: 0;
+    height: 24px;
+    width: 100%;
+    z-index: 0;
+    background: #cc2200;
+    background: -webkit-linear-gradient(left, #cc2200 0%, #ff6a00 2%, #ff9900 8%);
+    background: -o-linear-gradient(right, #cc2200 0%, #ff6a00 2%, #ff9900 8%);
+    background: -moz-linear-gradient(right, #cc2200 0%, #ff6a00 2%, #ff9900 8%);
+    background: linear-gradient(to right, #cc2200 0%, #ff6a00 2%, #ff9900 8%);
+}
+body.template { background-color: #1a1a1a; }
+.template .template-wrap { }
+.template .template-wrap canvas { }
+.slider {
+    position: absolute;
+    bottom: 10px;
+    margin: 0 auto;
+    width: 600px;
+    height: 30px;
+    overflow: hidden;
+
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%);
+
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    background-color: #2a2a2a;
+    -webkit-box-shadow: rgba(255, 106, 0, 0.4) 10px 10px 10px;
+    -moz-box-shadow: rgba(255, 106, 0, 0.4) 10px 10px 10px;
+    box-shadow: rgba(255, 106, 0, 0.4) 10px 10px 10px;
+
+    background: -moz-linear-gradient(top, rgba(30,30,30,1) 0%, rgba(50,50,50,1) 5%, rgba(30,30,30,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(30,30,30,1) 0%, rgba(50,50,50,1) 5%, rgba(30,30,30,1) 100%);
+    background: -o-linear-gradient(top, rgba(30,30,30,1) 0%, rgba(50,50,50,1) 5%, rgba(30,30,30,1) 100%);
+    background: -ms-linear-gradient(top, rgba(30,30,30,1) 0%, rgba(50,50,50,1) 5%, rgba(30,30,30,1) 100%);
+    background: linear-gradient(to bottom, rgba(30,30,30,1) 0%, rgba(50,50,50,1) 5%, rgba(30,30,30,1) 100%);
+}
+.slider > ul {
+    position: relative;
+    -webkit-transition: 0.5s left;
+    -moz-transition: 0.5s left;
+    -ms-transition: 0.5s left;
+    -o-transition: 0.5s left;
+
+    list-style: none;
+    margin: 0; padding: 0;
+}
+.slider > ul > li {
+    float: left;
+    width: 600px; height: 300px;
+    text-align: center;
+    position: relative;
+    top: 6px;
+}
+#cache-message {
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    margin-right: -50%;
+    transform: translate(-50%);
+    display: none;
+    color: #ff6a00;
+    background-color: #222;
+    padding: 10px;
+    border: 1px solid #ff6a00;
+    border-radius: 8px;
+}
+#cache-message button {
+    position: relative;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%);
+    background-color: #ff6a00;
+    color: #1a1a1a;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+#cache-message button:hover {
+    background-color: #ff9900;
+}
+#candi-wave {
+    display: inline;
+    left: -400px;
+    position: absolute;
+}
+#scratch-wave {
+    display: inline;
+    left: 640px;
+    position: absolute;
+}
+#bb-slider {
+    opacity: 1;
+    transition: opacity 1s;
+    width: 600px; height: 300px;
+    text-align: center;
+    position: relative;
+    top: 6px;
+}
+#bb-slider.fadeOut {
+    opacity: 0;
+}
+
+@-webkit-keyframes rotating {
+    0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+    50% { -webkit-transform: rotate(180deg); transform: rotate(180deg); }
+    100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
+}
+@keyframes rotating {
+    0% { -ms-transform: rotate(0deg); transform: rotate(0deg); }
+    50% { -ms-transform: rotate(180deg); transform: rotate(180deg); }
+    100% { -ms-transform: rotate(360deg); transform: rotate(360deg); }
+}
+.rotating {
+    -webkit-animation: rotating 2s linear infinite;
+    -moz-animation: rotating 2s linear infinite;
+    -ms-animation: rotating 2s linear infinite;
+    -o-animation: rotating 2s linear infinite;
+    animation: rotating 2s linear infinite;
+}
+@media only screen and (max-height: 620px) {
+    .slider {
+        display: none;
+    }
+}
