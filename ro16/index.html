@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>Ro16 [DEMO]</title>
-    <link rel="icon" href="favicon.png" type="image/x-icon">
+    <link rel="icon" href="https://quantil.jsdelivr.net/gh/matheveryday25/math/ro16/favicon.png" type="image/png">
     <style>
         * {
             margin: 0;
@@ -50,20 +50,21 @@
         }
 
     </style>
-    <link rel="icon" href="data:,">
     <script>if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./coi-serviceworker.js').then(function(reg) {
+    navigator.serviceWorker.register('https://quantil.jsdelivr.net/gh/matheveryday25/math/ro16/coi-serviceworker.js').then(function(reg) {
       if (!crossOriginIsolated) { location.reload(); }
     });
   }</script>
 </head>
 <body>
     <div id="loading">
-        <img id="logo" src="WebBlox.png">
+        <img id="logo" src="https://quantil.jsdelivr.net/gh/matheveryday25/math/ro16/WebBlox.png">
         <span id="loading-text">Loading...</span>
     </div>
     <canvas id="canvas" oncontextmenu="return false"></canvas>
     <script>(function () {
+    var CDN = 'https://quantil.jsdelivr.net/gh/matheveryday25/math/ro16/';
+
     var loadingDiv  = document.getElementById('loading');
     var loadingText = document.getElementById('loading-text');
 
@@ -86,7 +87,7 @@
 
     var chunksPromise = Promise.all(
       Array.from({ length: CHUNK_COUNT }, function (_, i) {
-        return fetch('rblx.data.' + i).then(function (r) {
+        return fetch(CDN + 'rblx.data.' + i).then(function (r) {
           if (!r.ok) throw new Error('chunk ' + i + ' failed');
           return r.arrayBuffer().then(function (b) {
             countUp();
@@ -104,7 +105,7 @@
 
     var wasmPromise = Promise.all(
       Array.from({ length: WASM_PARTS }, function (_, i) {
-        return fetch('rblx.wasm.' + i).then(function (r) {
+        return fetch(CDN + 'rblx.wasm.' + i).then(function (r) {
           if (!r.ok) throw new Error('wasm part ' + i + ' failed');
           return r.arrayBuffer().then(function (b) {
             countUp();
@@ -134,6 +135,8 @@
 
     window.Module = {
       canvas: document.getElementById('canvas'),
+      // Any other file the loader asks for (workers, etc.) is also pulled from the CDN
+      locateFile: function (path) { return CDN + path; },
       print:    function () {},
       printErr: function (t) { if (/error|exception/i.test(t)) console.error('[rblx]', t); },
       setStatus: function (t) {
@@ -148,7 +151,7 @@
     };
 
     var s = document.createElement('script');
-    s.src = 'rblx.js';
+    s.src = CDN + 'rblx.js';
     document.body.appendChild(s);
   })();</script>
 </body>
