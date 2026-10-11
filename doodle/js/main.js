@@ -28,10 +28,32 @@
 var Doodle = Doodle || {};
 
 Doodle.game = new Phaser.Game(635, 955, Phaser.AUTO);
+
 // Anonymous CORS for textures: inside the simulator's sandboxed iframe,
 // images arrive cross-origin and would taint WebGL without it.
 // (Serve with `Access-Control-Allow-Origin: *` — see serve.py.)
-Doodle.game.load.crossOrigin = 'anonymous';
+// Set inside Boot.init: game.load only exists once the game has booted.
+(function () {
+  function arm() {
+    try {
+      if (Doodle.game && Doodle.game.load) { Doodle.game.load.crossOrigin = 'anonymous'; return true; }
+    } catch (e) {}
+    return false;
+  }
+  if (Doodle.BootState) {
+    if (Doodle.BootState.prototype && Doodle.BootState.prototype.init) {
+      var pInit = Doodle.BootState.prototype.init;
+      Doodle.BootState.prototype.init = function () { arm(); return pInit.apply(this, arguments); };
+    } else if (Doodle.BootState.init) {
+      var oInit = Doodle.BootState.init;
+      Doodle.BootState.init = function () { arm(); return oInit.apply(this, arguments); };
+    }
+  }
+  var n = 0;
+  var iv = setInterval(function () {
+    if (arm() || ++n > 100) clearInterval(iv);
+  }, 50);
+})();
 
 Doodle.game.state.add('Boot', Doodle.BootState); 
 Doodle.game.state.add('Preload', Doodle.PreloadState); 
