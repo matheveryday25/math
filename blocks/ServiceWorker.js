@@ -1,10 +1,10 @@
 const cacheName = "reun-Block Blast Puzzle-1.1";
 const contentToCache = [
-    "https://quantil.jsdelivr.net/gh/matheveryday25/math/blocks/Build/BlockBlast1.1-8.loader.js",
-    "https://quantil.jsdelivr.net/gh/matheveryday25/math/blocks/Build/BlockBlast1.1-8.framework.js.unityweb",
-    "https://quantil.jsdelivr.net/gh/matheveryday25/math/blocks/Build/BlockBlast1.1-8.data.unityweb",
-    "https://quantil.jsdelivr.net/gh/matheveryday25/math/blocks/Build/BlockBlast1.1-8.wasm.unityweb",
-    "https://quantil.jsdelivr.net/gh/matheveryday25/math/blocks/TemplateData/style.css"
+    "https://cdn.jsdelivr.net/gh/matheveryday25/math/blocks/Build/BlockBlast1.1-8.loader.js",
+    "https://cdn.jsdelivr.net/gh/matheveryday25/math/blocks/Build/BlockBlast1.1-8.framework.js.unityweb",
+    "https://cdn.jsdelivr.net/gh/matheveryday25/math/blocks/Build/BlockBlast1.1-8.data.unityweb",
+    "https://cdn.jsdelivr.net/gh/matheveryday25/math/blocks/Build/BlockBlast1.1-8.wasm.unityweb",
+    "https://cdn.jsdelivr.net/gh/matheveryday25/math/blocks/TemplateData/style.css"
 
 ];
 
