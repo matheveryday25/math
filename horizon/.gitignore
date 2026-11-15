@@ -1,0 +1,7 @@
+# Build inputs, not runtime assets — keep them out of the CDN repo.
+package.js
+fetch-sounds.js
+boot-overlay.html
+boot-overlay.css
+boot-overlay.js
+_headers

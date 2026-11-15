@@ -1,0 +1,25 @@
+{
+  "sounds/sound.tar.gz": {
+    "parts": [
+      "sounds/sound.tar.gz.part0",
+      "sounds/sound.tar.gz.part1",
+      "sounds/sound.tar.gz.part2",
+      "sounds/sound.tar.gz.part3",
+      "sounds/sound.tar.gz.part4",
+      "sounds/sound.tar.gz.part5",
+      "sounds/sound.tar.gz.part6",
+      "sounds/sound.tar.gz.part7",
+      "sounds/sound.tar.gz.part8",
+      "sounds/sound.tar.gz.part9",
+      "sounds/sound.tar.gz.part10",
+      "sounds/sound.tar.gz.part11",
+      "sounds/sound.tar.gz.part12",
+      "sounds/sound.tar.gz.part13",
+      "sounds/sound.tar.gz.part14",
+      "sounds/sound.tar.gz.part15",
+      "sounds/sound.tar.gz.part16",
+      "sounds/sound.tar.gz.part17"
+    ],
+    "size": 354952979
+  }
+}
